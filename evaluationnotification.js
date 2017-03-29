@@ -132,16 +132,18 @@ var EvaluationNotification = function(){};
         }
     };
 
-    EvaluationNotification.prototype.autoOpen = function(e) {
-        if(!localStorage.time) {
-            localStorage.time = 1;
-        } else {
-            if((e.params.times/localStorage.time) === 1) {
-                e.open({})
+    EvaluationNotification.prototype.autoOpen = function(e,time) {
+        setTimeout(function() {
+            if(!localStorage.time && localStorage.time < e.params.times) {
+                localStorage.time = 1;
             } else {
-                localStorage.time++;
+                if((e.params.times/localStorage.time) === 1) {
+                    e.open({})
+                } else {
+                    localStorage.time++;
+                }
             }
-        }
+        },time)
     };
 
     EvaluationNotification.prototype.handleExternalURLs = function() {
