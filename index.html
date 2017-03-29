@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>Test Evaluation Notification</title>
+    <link rel="stylesheet" href="material-design-iconic-font/css/material-design-iconic-font.min.css"/>
+    <link rel="stylesheet" href="animate.css/animate.css"/>
+    <link rel="stylesheet" href="evaluationnotification.min.css"/>
+</head>
+<body>
+    <button class="bttn bttn-indigo" id="testevaluationnotification">Test</button>
+
+    <script src="jquery/jquery.min.js"></script>
+    <script src="evaluationnotification.min.js"></script>
+    <script>
+        evnt.setParams({
+            title:'Times',
+            text: 'Evaluate us and leave your comment as this is very valuable',
+            bttnYesClass: 'bttn-orange',
+            bttnNoClass: 'bttn-yellow'
+        });
+
+        evnt.autoOpen(evnt);
+
+        $(document).on('click', '#testevaluationnotification', function(evt) {
+            EvaluationNotification.open({
+                title:'Test used button',
+                text: 'Evaluate us and leave your comment as this is very valuable',
+                bttnYesClass: 'bttn-orange',
+                bttnNoClass: 'bttn-yellow',
+                bttnNoCallBack: function(){
+                    localStorage.time = 3;
+                },
+                url: 'http://play.google.com/store/apps/details?id=br.com.ddsw.app.cmdfull'
+            });
+        });
+
+    </script>
+</body>
+</html>
